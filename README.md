@@ -1,3 +1,2 @@
-# final_project
-I had the issue that I pushed to the wrong branch but now all files are on main.
-The data can not be uploaded becaues of 100MB restriction of github
+# Final_project
+The dropbox file is uploaded due to small size and complicated downloading from dropbox from cmd
