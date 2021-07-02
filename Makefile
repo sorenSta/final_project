@@ -1,17 +1,27 @@
+STRING_DB = https://stringdb-static.org/download/protein.links.v11.0/9606.protein.links.v11.0.txt.gz
+STRING_TAR = 9606.protein.links.v11.0.txt.gz
+
+
 #get boxplot
-boxplot.png: data/pd_ppi.csv make_boxplot.py
-	python make_boxplot.py data/pd_ppi.csv
+boxplot.png: pd_ppi.csv make_boxplot.py
+	python make_boxplot.py pd_ppi.csv
 
 
 #join PPI and protein domain
-data/pd_ppi.csv: data/network_nodes.csv data/proteins_w_domains.txt protein_domain.py
-	python protein_domain.py data/network_nodes.csv data/proteins_w_domains.txt
+pd_ppi.csv: network_nodes.csv proteins_w_domains.txt protein_domain.py
+	python protein_domain.py network_nodes.csv proteins_w_domains.txt
 
 
 
 #get network connectedness of nodes
-data/network_nodes.csv: data/9606.protein.links.v11.0.txt network.py
-	python network.py data/9606.protein.links.v11.0.txt
+network_nodes.csv: 9606.protein.links.v11.0.txt network.py
+	python network.py 9606.protein.links.v11.0.txt
+
+#get data
+9606.protein.links.v11.0.txt : 
+	wget $(STRING_DB)
+	gunzip $(STRING_TAR) 
+
 
 
 

@@ -5,7 +5,7 @@ import sys
 
 #get PPI data
 filename = sys.argv[-1]
-ppi_df = pd.read_csv("./" + filename, header =0, sep = " ")
+ppi_df = pd.read_csv(filename, header =0, sep = " ")
 
 #filtering on combined score > 500
 ppi_df = ppi_df[ppi_df["combined_score"] >= 500]
@@ -25,4 +25,4 @@ degree_large["group"] = "large"
 degree_small["group"] = "small"
 degree_all = pd.concat([degree_large, degree_small])
 
-degree_all.to_csv("./data/network_nodes.csv", sep=",", index=False)
+degree_all.to_csv("network_nodes.csv", sep=",", index=False)
